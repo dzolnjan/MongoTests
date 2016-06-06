@@ -34,12 +34,10 @@ namespace MongoTests
 
             collection.Update(model);
 
-            //var filter = Builders<Model>.Filter.Where(x => x.Id == new Id(model.Id));
-            //var filter = Builders<Model>.Filter.Where(x => x.Id == model.Id);
             var modelFetched = collection.GetById(model.Id);
 
             Console.WriteLine($"{model.Id} == {modelFetched.Id}");
-            Console.WriteLine($"{model.DateUpdated.Ticks} != {modelFetched.DateUpdated.Ticks}");
+            Console.WriteLine($"{modelFetched.DateCreated.Ticks} != {modelFetched.DateUpdated.Ticks}");
             Console.ReadKey();
         }
 
