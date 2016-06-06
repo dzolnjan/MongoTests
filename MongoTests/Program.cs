@@ -28,20 +28,15 @@ namespace MongoTests
 
             var model = new Model() { SomeProp = Guid.NewGuid().ToString(), IdGuidProp = IdGuid.Generate() };
 
-            collection
-                    .InsertOneAsync(model)
-                    .Wait();
+            collection.Add(model);
 
             Task.Delay(10).Wait();
 
             collection.Update(model);
 
             //var filter = Builders<Model>.Filter.Where(x => x.Id == new Id(model.Id));
-            var filter = Builders<Model>.Filter.Where(x => x.Id == model.Id);
-            var modelFetched = collection
-                .Find(filter)
-                .SingleOrDefaultAsync()
-                .Result;
+            //var filter = Builders<Model>.Filter.Where(x => x.Id == model.Id);
+            var modelFetched = collection.GetById(model.Id);
 
             Console.WriteLine($"{model.Id} == {modelFetched.Id}");
             Console.WriteLine($"{model.DateUpdated.Ticks} != {modelFetched.DateUpdated.Ticks}");
