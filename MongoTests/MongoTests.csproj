@@ -56,16 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomIdSerializer.cs" />
-    <Compile Include="Id.cs" />
-    <Compile Include="IdUtils\BsonUtils.cs" />
-    <Compile Include="IdUtils\ObjectIdHelper.cs" />
-    <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0079a398-855b-4a27-a52e-befb7dad2ad6}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
