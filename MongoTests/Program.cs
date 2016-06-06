@@ -32,16 +32,16 @@ namespace MongoTests
                     .InsertOneAsync(model)
                     .Wait();
 
+            Task.Delay(10).Wait();
+
+            collection.Update(model);
+
             //var filter = Builders<Model>.Filter.Where(x => x.Id == new Id(model.Id));
             var filter = Builders<Model>.Filter.Where(x => x.Id == model.Id);
             var modelFetched = collection
                 .Find(filter)
                 .SingleOrDefaultAsync()
                 .Result;
-
-            Task.Delay(10).Wait();
-
-            collection.Update(modelFetched);
 
             Console.WriteLine($"{model.Id} == {modelFetched.Id}");
             Console.WriteLine($"{model.DateUpdated.Ticks} != {modelFetched.DateUpdated.Ticks}");
