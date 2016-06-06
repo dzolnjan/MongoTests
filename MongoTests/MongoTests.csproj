@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MongoCollectionExtensions.cs" />
     <Compile Include="IdGuidSerializer.cs" />
     <Compile Include="CustomIdSerializer.cs" />
     <Compile Include="Program.cs" />

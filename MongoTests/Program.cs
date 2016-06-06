@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using System;
+using System.Threading.Tasks;
 
 namespace MongoTests
 {
@@ -38,7 +39,12 @@ namespace MongoTests
                 .SingleOrDefaultAsync()
                 .Result;
 
+            Task.Delay(10).Wait();
+
+            collection.Update(modelFetched);
+
             Console.WriteLine($"{model.Id} == {modelFetched.Id}");
+            Console.WriteLine($"{model.DateUpdated.Ticks} != {modelFetched.DateUpdated.Ticks}");
             Console.ReadKey();
         }
 

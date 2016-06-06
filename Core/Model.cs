@@ -15,12 +15,18 @@ namespace Core
 
     public abstract class ModelBase
     {
-        public Id Id { get; set; }
-
         protected ModelBase()
         {
             Id = Id.Generate();
+            DateCreated = DateTime.UtcNow;
+            DateUpdated = DateCreated;
         }
+
+        public Id Id { get; set; }
+
+        public DateTime DateCreated{ get; set; }
+
+        public DateTime DateUpdated { get; set; }
 
         public int DontPutMeInDb { get; set; }
     }
