@@ -13,6 +13,7 @@ namespace MongoTests
         {
             // Register Id type serializer and custom class maps
             BsonSerializer.RegisterSerializer(typeof(Id), new CustomIdSerializer());
+            BsonSerializer.RegisterSerializer(typeof(IdGuid), new IdGuidSerializer());
             BsonClassMap.RegisterClassMap<ModelBase>(cm =>
             {
                 cm.AutoMap();
@@ -24,7 +25,7 @@ namespace MongoTests
 
             var collection = db.GetCollection<Model>("model");
 
-            var model = new Model() { SomeProp = Guid.NewGuid().ToString() };
+            var model = new Model() { SomeProp = Guid.NewGuid().ToString(), IdGuidProp = IdGuid.Generate() };
 
             collection
                     .InsertOneAsync(model)

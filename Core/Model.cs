@@ -9,6 +9,8 @@ namespace Core
     public class Model : ModelBase
     {
         public string SomeProp { get; set; }
+
+        public IdGuid IdGuidProp { get; set; }
     }
 
     public abstract class ModelBase
